@@ -71,6 +71,7 @@ $(document).ready(function(){
 
  $('#provinsi').on('change', function(){
    let kode_wilayah = $(this).val()
+   $('#provinsi option').attr("selected", false)
    $('#provinsi option[value='+kode_wilayah+']').attr("selected", true)
   //  console.log($('#provinsi option[selected]').text())
    $('#wilayah').html('');
@@ -94,6 +95,7 @@ $(document).ready(function(){
 
  $('#wilayah').on('change', function(){
    let kode_wilayah = $(this).val()
+   $('#wilayah option').attr("selected", false)
    $('#wilayah option[value='+kode_wilayah+']').attr("selected", true)
    $('#kec').html('');
    $('#sp').html('')
@@ -113,6 +115,14 @@ $(document).ready(function(){
       }  
   })
 })
+ $('#kec').on('change', function(){
+   let kode_wilayah = $(this).val()
+   $('#kec option').attr("selected", false)
+   $('#kec option[value='+kode_wilayah+']').attr("selected", true)
+  //  $('#kec').html('');
+   $('#sp').html('')
+  
+})
 
  $('#bentuk').on('change', function(){
    let kode_wilayah = $('#kec').val()
@@ -129,7 +139,7 @@ $(document).ready(function(){
         var  sp = JSON.parse(JSON.stringify(data));
         // console.log(sp)
         $.each(sp, function(i , row){
-          $('#sp').append('<option value='+row.kode_wilayah+'>'+row.nama+'</option>')
+          $('#sp').append('<option value='+row.npsn+'>'+row.nama+'</option>')
         })
       }  
   })
@@ -137,6 +147,8 @@ $(document).ready(function(){
 
 $('#sp').on('change', function(){
   let kode_sp=$(this).val()
+  // $('#sp').html('')
+  $('#sp option').attr("selected", false)
   
   $('#sp option[value='+kode_sp+']').attr("selected", true)
   var hasil = {
